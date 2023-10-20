@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>UberEats</title>
+       
+    </head>
+    <body style="text-align:center">
+        <h3>Deliver To</h3>
+    <input type="text" id="pincode" value="" placeholder="Enter pincode"> 
+    <button type="button" onclick="myFunction()">Get Started</button> 
+    <div id="pin_block"  style="display:none">
+    <p>Items to be delivered at <span id="demo"></span> pincode.</p>
+    <p>Add user details:</p>
+    <form action="/" method="GET">
+        <input type="text" id="userid" value="" placeholder="Enter initial"/><br>
+        <input type="text" id="fname" name="name" value="" placeholder="Enter name" /><br>
+        <input type="text" id="email" name="email" value="" placeholder="Enter email"/><br>
+        <input type="text" id="phone" name="phone" value="" placeholder="Enter phone"/><br>
+        <input type="submit" value="Add" name="submit"/>
+        </form>
+        {formResults}
+    </div>
+    <script> 
+    function myFunction() { 
+        var x = document.getElementById("pincode").value; 
+        document.getElementById("demo").innerHTML = x; 
+         document.getElementById("pin_block").style='display:block';
+    } 
+    </script> 
+    </body>
+</html>
