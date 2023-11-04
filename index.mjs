@@ -7,8 +7,8 @@ const docClient = DynamoDBDocumentClient.from(client);
 import fs from 'fs';
 const content = fs.readFileSync('public/index.html', {encoding:'utf-8'});
 
-
 export const handler = async (event) => {
+  let dynamicHtml = content
   if(event.queryStringParameters){
   const command = new PutCommand({
     TableName: "formData",
@@ -20,6 +20,9 @@ export const handler = async (event) => {
   });
   //const response = await docClient.send(command);
   await docClient.send(command);
+     if (event.queryStringParameters && event.queryStringParameters.name) {
+    dynamicHtml = `<p>Hey ${event.queryStringParameters.name}!</p>`;
+  }
   }
   const response = {
     statusCode: 200,
